@@ -20,7 +20,7 @@ Beside the showcase, the idea behind the project is also to offer a stable API t
 Currently, there's only one supported Natural Language Processing (NLP) adapter which uses the Stanford Core NLP library.
 And it only supports German raw texts right now.
 
-The implementation is provided [here](src/main/java/de/adesso/nlpshowcase/nlp/external/adapter/StanfordCoreNlpAdapter).
+The implementation is provided [here](src/main/java/de/adesso/nlpshowcase/nlp/external/adapter/StanfordCoreNlpAdapter.java).
 
 ## Local development
 
