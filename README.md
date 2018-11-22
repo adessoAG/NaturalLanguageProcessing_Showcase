@@ -1,7 +1,7 @@
-[travis-image]: https://travis-ci.org/sasfeld-thesis/question-generator.svg?branch=master
-[travis-url]: https://travis-ci.org/sasfeld-thesis/question-generator
+[travis-image]: https://travis-ci.org/adessoAG/natural-language-processing-showcase.svg?branch=master
+[travis-url]: https://travis-ci.org/adessoAG/natural-language-processing-showcase
 
-# Natural Language Processing Showcase  
+# Natural Language Processing Showcase [![Travis Build Status][travis-image]][travis-url]
 
 A spring boot web application to demonstrate Natural Language Processing (NLP) capabilities in Java.
 
@@ -20,7 +20,7 @@ Beside the showcase, the idea behind the project is also to offer a stable API t
 Currently, there's only one supported Natural Language Processing (NLP) adapter which uses the Stanford Core NLP library.
 And it only supports German raw texts right now.
 
-The implementation is provided [here](src/main/java/de/adesso/nlpshowcase/nlp/external/adapter/StanfordCoreNlpAdapter).
+The implementation is provided [here](src/main/java/de/adesso/nlpshowcase/nlp/external/adapter/StanfordCoreNlpAdapter.java).
 
 ## Local development
 
