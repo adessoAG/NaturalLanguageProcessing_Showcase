@@ -52,8 +52,8 @@ public class StanfordCoreNlpAdapter implements NlpAdapter {
         stanfordCoreNlpPoperties.setProperty("annotators", getAnnotatorsProperty());
         // see https://github.com/stanfordnlp/CoreNLP/blob/master/src/edu/stanford/nlp/pipeline/StanfordCoreNLP-german.properties
         stanfordCoreNlpPoperties.put("tokenize.language", "de");
-        stanfordCoreNlpPoperties.put("pos.model", ENGLISH_PART_OF_SPEECH_MODEL);
-        stanfordCoreNlpPoperties.put("ner.model", ENGLISH_NAMED_ENTITY_RECOGNITION_MODEL); // Huge German Corpus
+        stanfordCoreNlpPoperties.put("pos.model", GERMAN_PART_OF_SPEECH_MODEL);
+        stanfordCoreNlpPoperties.put("ner.model", GERMAN_NAMED_ENTITY_RECOGNITION_MODEL); // Huge German Corpus
         stanfordCoreNlpPoperties.put("ner.useSUTime", "false"); // 	Whether or not to use SUTime. SUTime at present only supports English; if not processing English, make sure to set this to false.
         this.germanNlpPipeline = new StanfordCoreNLP(stanfordCoreNlpPoperties);
     }

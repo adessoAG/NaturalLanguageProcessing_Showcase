@@ -22,33 +22,10 @@ public class NlpServiceTest {
     @Autowired
     private NlpService nlpService;
 
-//    @Test
-//    public void annotate_shouldAnnotateGermanRawText() throws Exception {
-//        // given
-//        final String givenRawText = "Berlin ist die Hauptstadt von Deutschland.";
-//
-//        // when
-//        NlpResult nlpResult = nlpService.annotate(givenRawText);
-//
-//        // then
-//        assertThat(nlpResult).isNotNull();
-//        assertThat(nlpResult.getRawText()).isEqualTo(givenRawText);
-//        assertThat(nlpResult.getAnnotatedSentences().size()).isEqualTo(1);
-//
-//        AnnotatedSentences firstSentence = nlpResult.getAnnotatedSentences().get(0);
-//        assertThat(firstSentence.getAnnotatedWords().size()).isGreaterThan(6);
-//
-//        AnnotatedWord firstWord = firstSentence.getAnnotatedWords().get(0);
-//        assertThat(firstWord.getWord()).isEqualTo("Berlin");
-//        assertThat(firstWord.getPartOfSpeechTag()).isEqualTo("NE");
-//        assertThat(firstWord.getNamedEntityRecognitionTag()).isEqualTo("LOCATION");
-//    }
-//
-
     @Test
-    public void annotate_shouldAnnotateEnglishRawText() throws Exception {
+    public void annotate_shouldAnnotateGermanRawText() throws Exception {
         // given
-        final String givenRawText = "Berlin is the capital of Germany.";
+        final String givenRawText = "Berlin ist die Hauptstadt von Deutschland.";
 
         // when
         NlpResult nlpResult = nlpService.annotate(givenRawText);
@@ -63,7 +40,30 @@ public class NlpServiceTest {
 
         AnnotatedWord firstWord = firstSentence.getAnnotatedWords().get(0);
         assertThat(firstWord.getWord()).isEqualTo("Berlin");
-        assertThat(firstWord.getPartOfSpeechTag()).isEqualTo("NNP");
-        assertThat(firstWord.getNamedEntityRecognitionTag()).isEqualTo("CITY");
+        assertThat(firstWord.getPartOfSpeechTag()).isEqualTo("NE");
+        assertThat(firstWord.getNamedEntityRecognitionTag()).isEqualTo("LOCATION");
     }
+
+
+//    @Test
+//    public void annotate_shouldAnnotateEnglishRawText() throws Exception {
+//        // given
+//        final String givenRawText = "Berlin is the capital of Germany.";
+//
+//        // when
+//        NlpResult nlpResult = nlpService.annotate(givenRawText);
+//
+//        // then
+//        assertThat(nlpResult).isNotNull();
+//        assertThat(nlpResult.getRawText()).isEqualTo(givenRawText);
+//        assertThat(nlpResult.getAnnotatedSentences().size()).isEqualTo(1);
+//
+//        AnnotatedSentences firstSentence = nlpResult.getAnnotatedSentences().get(0);
+//        assertThat(firstSentence.getAnnotatedWords().size()).isGreaterThan(6);
+//
+//        AnnotatedWord firstWord = firstSentence.getAnnotatedWords().get(0);
+//        assertThat(firstWord.getWord()).isEqualTo("Berlin");
+//        assertThat(firstWord.getPartOfSpeechTag()).isEqualTo("NNP");
+//        assertThat(firstWord.getNamedEntityRecognitionTag()).isEqualTo("CITY");
+//    }
 }

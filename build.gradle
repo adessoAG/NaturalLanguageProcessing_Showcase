@@ -31,7 +31,7 @@ dependencies {
     // Pre-trained models for certain languages
     implementation "edu.stanford.nlp:stanford-corenlp:$version_stanford_core_nlp:models"
     implementation "edu.stanford.nlp:stanford-corenlp:$version_stanford_core_nlp:models-english"
-//    implementation "edu.stanford.nlp:stanford-corenlp:$version_stanford_core_nlp:models-german"
+    implementation "edu.stanford.nlp:stanford-corenlp:$version_stanford_core_nlp:models-german"
 
     implementation "org.springframework.boot:spring-boot-starter-web:$version_spring_boot"
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf:$version_spring_boot"
