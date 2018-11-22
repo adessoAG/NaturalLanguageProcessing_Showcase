@@ -1,7 +1,7 @@
-[travis-image]: https://travis-ci.org/sasfeld-thesis/question-generator.svg?branch=master
-[travis-url]: https://travis-ci.org/sasfeld-thesis/question-generator
+[travis-image]: https://travis-ci.org/adessoAG/natural-language-processing-showcase.svg?branch=master
+[travis-url]: https://travis-ci.org/adessoAG/natural-language-processing-showcas
 
-# Natural Language Processing Showcase  
+# Natural Language Processing Showcase [![Travis Build Status][travis-image]][travis-url]
 
 A spring boot web application to demonstrate Natural Language Processing (NLP) capabilities in Java.
 
