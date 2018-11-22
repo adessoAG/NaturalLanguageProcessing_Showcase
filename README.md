@@ -1,5 +1,5 @@
 [travis-image]: https://travis-ci.org/adessoAG/natural-language-processing-showcase.svg?branch=master
-[travis-url]: https://travis-ci.org/adessoAG/natural-language-processing-showcas
+[travis-url]: https://travis-ci.org/adessoAG/natural-language-processing-showcase
 
 # Natural Language Processing Showcase [![Travis Build Status][travis-image]][travis-url]
 
