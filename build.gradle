@@ -37,6 +37,10 @@ dependencies {
     implementation "org.springframework.boot:spring-boot-starter-thymeleaf:$version_spring_boot"
     implementation "org.springframework.boot:spring-boot-devtools:$version_spring_boot"
 
+    // https://mvnrepository.com/artifact/org.webjars/bootstrap
+    implementation "org.webjars:bootstrap:$version_webjars_bootstrap"
+
+
     testImplementation "org.springframework.boot:spring-boot-starter-test:$version_spring_boot"
     testImplementation "org.assertj:assertj-core:$version_assertj"
 

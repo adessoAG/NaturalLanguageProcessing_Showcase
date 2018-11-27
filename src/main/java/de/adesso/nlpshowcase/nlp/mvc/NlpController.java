@@ -22,24 +22,27 @@ public class NlpController {
         this.nlpService = nlpService;
     }
 
-    @GetMapping("/nlp")
+    @GetMapping("/")
     public String getNlpForm(Model model) {
-        addNlpParams(model);
+        createInitialNlpParams(model);
 
         return "nlp";
     }
 
-    @PostMapping("/nlp")
+    @PostMapping("/")
     public String processRawText(@ModelAttribute NlpParams nlpParams, Model model) {
         NlpResult nlpResult = nlpService.annotate(nlpParams.getRawText());
         model.addAttribute("nlpResult", nlpResult);
-        addNlpParams(model);
+        model.addAttribute("nlpParams", nlpParams);
 
         return "nlp";
     }
 
-    private void addNlpParams(Model model) {
-        model.addAttribute("nlpParams", NlpParams.builder().build());
+    private void createInitialNlpParams(Model model) {
+        model.addAttribute("nlpParams", NlpParams
+                .builder()
+                .rawText("Max Mustermann wohnt in Berlin. Dort hat auch die Bundesregierung ihren Hauptsitz.")
+                .build());
     }
 
 }
