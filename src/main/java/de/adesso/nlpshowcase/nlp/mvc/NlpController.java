@@ -41,7 +41,7 @@ public class NlpController {
     private void createInitialNlpParams(Model model) {
         model.addAttribute("nlpParams", NlpParams
                 .builder()
-                .rawText("Max Mustermann wohnt in Berlin. Dort hat auch die Bundesregierung ihren Hauptsitz.")
+                .rawText("Barack Obama was born in Hawaii.  He is the president. Obama was elected in 2008.")
                 .build());
     }
 

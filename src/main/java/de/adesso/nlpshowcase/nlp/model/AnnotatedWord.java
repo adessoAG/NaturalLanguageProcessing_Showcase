@@ -17,4 +17,6 @@ public class AnnotatedWord {
 
     private String namedEntityRecognitionTag;
 
+    private String coreferenceMention;
+
 }

@@ -3,6 +3,8 @@ package de.adesso.nlpshowcase.nlp.external.adapter;
 import de.adesso.nlpshowcase.nlp.model.AnnotatedSentences;
 import de.adesso.nlpshowcase.nlp.model.AnnotatedWord;
 import de.adesso.nlpshowcase.nlp.model.NlpResult;
+import edu.stanford.nlp.coref.CorefCoreAnnotations;
+import edu.stanford.nlp.coref.data.Mention;
 import edu.stanford.nlp.ling.CoreAnnotations;
 import edu.stanford.nlp.ling.CoreLabel;
 import edu.stanford.nlp.pipeline.Annotation;
@@ -16,6 +18,7 @@ import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Properties;
+import java.util.concurrent.atomic.AtomicInteger;
 import java.util.stream.Collectors;
 
 /**
@@ -52,8 +55,8 @@ public class StanfordCoreNlpAdapter implements NlpAdapter {
         stanfordCoreNlpPoperties.setProperty("annotators", getAnnotatorsProperty());
         // see https://github.com/stanfordnlp/CoreNLP/blob/master/src/edu/stanford/nlp/pipeline/StanfordCoreNLP-german.properties
         stanfordCoreNlpPoperties.put("tokenize.language", "de");
-        stanfordCoreNlpPoperties.put("pos.model", GERMAN_PART_OF_SPEECH_MODEL);
-        stanfordCoreNlpPoperties.put("ner.model", GERMAN_NAMED_ENTITY_RECOGNITION_MODEL); // Huge German Corpus
+        stanfordCoreNlpPoperties.put("pos.model", ENGLISH_PART_OF_SPEECH_MODEL);
+        stanfordCoreNlpPoperties.put("ner.model", ENGLISH_NAMED_ENTITY_RECOGNITION_MODEL); // Huge German Corpus
         stanfordCoreNlpPoperties.put("ner.useSUTime", "false"); // 	Whether or not to use SUTime. SUTime at present only supports English; if not processing English, make sure to set this to false.
         this.germanNlpPipeline = new StanfordCoreNLP(stanfordCoreNlpPoperties);
     }
@@ -76,6 +79,11 @@ public class StanfordCoreNlpAdapter implements NlpAdapter {
         annotatorProperties.add("lemma");
         // activate: Named Entity Recognition
         annotatorProperties.add("ner");
+        // activate: Parse to allow Coreference recognition
+        annotatorProperties.add("parse");
+        // activate: Coreference Recognition
+        annotatorProperties.add("coref");
+
 
         return String.join(",", annotatorProperties);
     }
@@ -107,14 +115,27 @@ public class StanfordCoreNlpAdapter implements NlpAdapter {
 
     private List<AnnotatedWord> mapToAnnotatedWords(CoreMap sentence) {
         List<CoreLabel> tokens = sentence.get(CoreAnnotations.TokensAnnotation.class);
+        List<Mention> coReferenceMentions = sentence.get(CorefCoreAnnotations.CorefMentionsAnnotation.class);
 
+        AtomicInteger tokenIndex = new AtomicInteger(0);
         return tokens.stream().map(token -> {
-            return AnnotatedWord.builder()
+            AnnotatedWord annotatedWord = AnnotatedWord.builder()
                     .word(token.get(CoreAnnotations.TextAnnotation.class)) // the raw word itself
                     .partOfSpeechTag(token.get(CoreAnnotations.PartOfSpeechAnnotation.class)) // the POS tag
                     .namedEntityRecognitionTag(token.get(CoreAnnotations.NamedEntityTagAnnotation.class)) // the POS tag
-                    .build()
-                    ;
+                    .coreferenceMention(getCoreferenceMention(coReferenceMentions, tokenIndex.get()))
+                    .build();
+
+            tokenIndex.incrementAndGet();
+            return annotatedWord;
         }).collect(Collectors.toList());
+    }
+
+    private String getCoreferenceMention(List<Mention> coReferenceMentions, int index) {
+        if (index + 1 <= coReferenceMentions.size()) {
+            return coReferenceMentions.get(index).toString();
+        }
+
+        return null;
     }
 }
