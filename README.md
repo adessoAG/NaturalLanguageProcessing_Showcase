@@ -9,7 +9,7 @@ A spring boot web application to demonstrate Natural Language Processing (NLP) c
 
 There's a testing system provided by heroku where the most recent application is deployed continously.
 
-[Try it out](https://adesso-nlp-showcase.herokuapp.com/)
+[Try it out](http://groupelite.de:8020/)
 
 ## NLP adapters
 
