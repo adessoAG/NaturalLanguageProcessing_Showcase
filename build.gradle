@@ -20,7 +20,13 @@ repositories {
     mavenCentral()
 }
 
-
+bootRun {
+    jvmArgs = ["-Xms1024M"]
+}
+bootJar {
+    baseName = 'nlp-showcase'
+    version = '1.0'
+}
 dependencies {
     // https://projectlombok.org
     compileOnly "org.projectlombok:lombok:$version_lombok"
