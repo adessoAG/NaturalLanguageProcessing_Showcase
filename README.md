@@ -1,7 +1,7 @@
 [travis-image]: https://travis-ci.org/adessoAG/natural-language-processing-showcase.svg?branch=master
 [travis-url]: https://travis-ci.org/adessoAG/natural-language-processing-showcase
 
-# Natural Language Processing Showcase [![Travis Build Status][travis-image]][travis-url]
+# Natural Language Processing Showcase
 
 A spring boot web application to demonstrate Natural Language Processing (NLP) capabilities in Java.
 
